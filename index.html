@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Anisha | Personal Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg: #f4f8fa;
+    --card: #ffffff;
+    --text: #142d3b;
+    --muted: #637783;
+    --primary: #087f8c;
+    --dark: #102b3a;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+}
+
+body.dark {
+    --bg: #101c27;
+    --card: #1b2d3b;
+    --text: #ffffff;
+    --muted: #c2d0d8;
+    --dark: #07131d;
+}
+
+/* NAVBAR */
+
+header {
+    background: var(--dark);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: #36d6c5;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 19px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #36d6c5;
+}
+
+.theme-btn {
+    padding: 10px 15px;
+    background: #087f8c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* HOME */
+
+.hero {
+    max-width: 1150px;
+    min-height: 570px;
+    margin: auto;
+    padding: 70px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.small-title {
+    color: var(--primary);
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(35px, 5vw, 55px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero h3 {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 14px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.btn:hover {
+    background: #075d67;
+}
+
+/* PROFILE IMAGE */
+
+.image-box {
+    width: 290px;
+    height: 350px;
+    flex-shrink: 0;
+    padding: 10px;
+    background: #36d6c5;
+    border-radius: 15px 65px 15px 65px;
+    box-shadow: 15px 15px 0px #087f8c;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 58px 10px 58px;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 75px 25px;
+    scroll-margin-top: 80px;
+}
+
+.container {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.heading {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.subheading {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 40px;
+}
+
+.heading-line {
+    width: 55px;
+    height: 4px;
+    background: #36d6c5;
+    margin: 15px auto 30px;
+    border-radius: 10px;
+}
+
+/* ABOUT */
+
+.about-card {
+    background: var(--card);
+    padding: 35px;
+    border-left: 5px solid var(--primary);
+    border-radius: 10px;
+    line-height: 2;
+    color: var(--muted);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* EDUCATION */
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 10px;
+    border-bottom: 4px solid #36d6c5;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.skill {
+    background: var(--card);
+    text-align: center;
+    padding: 22px 10px;
+    border-radius: 8px;
+    border: 1px solid #c5e5e5;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.skill:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* PROJECTS */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    padding: 30px;
+    background: var(--card);
+    border-radius: 12px;
+    border-top: 5px solid var(--primary);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.project-no {
+    color: #36b9ad;
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.project-card h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.project-card p {
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+/* CONTACT */
+
+.contact-card {
+    background: var(--dark);
+    color: white;
+    padding: 45px 20px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.contact-card h2 {
+    color: #36d6c5;
+    margin-bottom: 20px;
+}
+
+.contact-card p {
+    line-height: 2;
+}
+
+.contact-card a {
+    color: #36d6c5;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+}
+
+/* FOOTER */
+
+footer {
+    background: #071923;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* MOBILE */
+
+@media(max-width: 768px) {
+
+    nav {
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 13px;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 55px 20px;
+    }
+
+    .image-box {
+        width: 230px;
+        height: 270px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 55px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+<nav>
+
+    <div class="logo">ANISHA.</div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="theme-btn" onclick="changeTheme()">
+        Dark Mode
+    </button>
+
+</nav>
+</header>
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            HELLO, WELCOME TO MY WEBSITE
+        </div>
+
+        <h1>
+            I'm <span>Anisha Islam Rouponti</span>
+        </h1>
+
+        <h3>
+            Computer Science & Engineering Student
+        </h3>
+
+        <p>
+            I am passionate about programming,
+            web development and modern technology.
+            I enjoy exploring new ideas,
+            learning technical skills and
+            developing creative digital solutions.
+        </p>
+
+        <a href="#projects" class="btn">
+            View My Work
+        </a>
+
+        <button class="btn" onclick="welcomeMessage()">
+            Say Hello
+        </button>
+
+    </div>
+
+    <div class="image-box">
+        <img src="profile.png"
+        alt="Anisha Islam Rouponti">
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+<div class="container">
+
+    <h2 class="heading">About Me</h2>
+    <div class="heading-line"></div>
+
+    <div class="about-card">
+        I am Anisha Islam Rouponti, a Computer Science
+        and Engineering student at CCN University of
+        Science & Technology, Cumilla, Bangladesh.
+
+        <br>
+
+        I have an interest in programming,
+        web development and software technology.
+
+        <br>
+
+        I believe that learning is a continuous journey.
+        I always try to improve my knowledge,
+        develop my skills and gain practical experience
+        through academic projects and personal learning.
+    </div>
+
+</div>
+</section>
+
+<!-- EDUCATION -->
+
+<section id="education">
+<div class="container">
+
+    <h2 class="heading">Education</h2>
+
+    <p class="subheading">
+        My Academic Background
+    </p>
+
+    <div class="education-grid">
+
+        <div class="card">
+            <h3>BSc in CSE</h3>
+            <p>
+                CCN University of Science & Technology
+            </p>
+            <p>
+                Department: Computer Science & Engineering
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>HSC - 2023</h3>
+            <p>
+                Bhasha Soinik Ajit Guha College
+            </p>
+            <p>Group: Science</p>
+            <p>GPA: 4.00</p>
+        </div>
+
+        <div class="card">
+            <h3>SSC - 2021</h3>
+            <p>
+                Shaila Rani Municipal Girls' High School
+            </p>
+            <p>Group: Science</p>
+            <p>GPA: 4.50</p>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+<div class="container">
+
+    <h2 class="heading">My Skills</h2>
+
+    <p class="subheading">
+        Technical & Personal Skills
+    </p>
+
+    <div class="skills-grid">
+
+        <div class="skill">HTML5</div>
+        <div class="skill">CSS3</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">C Programming</div>
+        <div class="skill">Python Basics</div>
+        <div class="skill">Problem Solving</div>
+        <div class="skill">Communication</div>
+        <div class="skill">Teamwork</div>
+
+    </div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+<div class="container">
+
+    <h2 class="heading">My Projects</h2>
+
+    <p class="subheading">
+        Academic Projects & Practical Learning
+    </p>
+
+    <div class="project-grid">
+
+        <div class="project-card">
+
+            <div class="project-no">01</div>
+
+            <h3>Student Management System</h3>
+
+            <p>
+                A system designed to organize student
+                information and maintain academic records.
+                This project focuses on making student
+                data management easier and more organized.
+            </p>
+
+        </div>
+
+        <div class="project-card">
+
+            <div class="project-no">02</div>
+
+            <h3>Lost and Found System</h3>
+
+            <p>
+                A project designed to help users report
+                lost belongings and share information
+                about found items. It aims to make
+                finding missing items more convenient.
+            </p>
+
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+<div class="container">
+
+    <div class="contact-card">
+
+        <h2>Get In Touch</h2>
+
+        <p>
+            Thank you for visiting my personal portfolio.
+        </p>
+
+        <p>
+            Email:
+            <a href="mailto:anishaislamrouponti@gmail.com">
+                anishaislamrouponti@gmail.com
+            </a>
+        </p>
+
+        <p>
+            Let's connect and share ideas!
+        </p>
+
+    </div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Anisha Islam Rouponti
+    </p>
+
+    <p>
+        Designed and Developed using HTML, CSS & JavaScript
+    </p>
+
+</footer>
+
+<script>
+
+// Greeting Message
+
+function welcomeMessage() {
+
+    alert(
+        "Welcome to my Personal Portfolio! Thank you for visiting."
+    );
+
+}
+
+// Dark Mode
+
+function changeTheme() {
+
+    document.body.classList.toggle("dark");
+
+    const btn = document.querySelector(".theme-btn");
+
+    if(document.body.classList.contains("dark")) {
+
+        btn.innerText = "Light Mode";
+
+    } else {
+
+        btn.innerText = "Dark Mode";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
